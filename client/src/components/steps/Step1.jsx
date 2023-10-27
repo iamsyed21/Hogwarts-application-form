@@ -30,7 +30,7 @@ const Step1 = ({ onNext }) => {
 
   return (
     <div>
-      <h1> </h1>
+      <h1 className='text-center'> Tell us about yourself </h1>
       <label for="firstName">Given Name</label>
       <input type="text" value={firstName} id="firstName" name="firstName" onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" required/>
       <label for="lastName">Last Name</label>
@@ -38,6 +38,7 @@ const Step1 = ({ onNext }) => {
       <br />
       <label for="nickName">Nick Name</label>
       <input type="text" value={givenName} id="nickName" name="nickName" onChange={(e) => setGivenName(e.target.value)} placeholder="What should we call you?" />
+      <div><span>You can always come back later and finish the form, we will save your progress!</span></div>
       <br />
       <button onClick={handleNext}>Next</button>
     </div>

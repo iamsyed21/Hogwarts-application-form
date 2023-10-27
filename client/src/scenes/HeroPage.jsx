@@ -22,7 +22,7 @@ const HeroPage = ({ setCurrentStep }) => {
       </h1>
       
     <p className='text-center'>We have few simple questions</p>
-    <p className='secretText'>This is just to trick muggles, we already know everything about you!</p>
+    <p className='secretText'>This is just to trick the muggles, we already know everything!</p>
     
 
     <div className="d-flex justify-content-center align-items-center">

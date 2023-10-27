@@ -1,6 +1,9 @@
 import { useUserContext } from '@/hooks/useUserContext.js';
+import userEmailSender from '@/hooks/useEmailSender.js';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
+ 
+
 
 
 const Step4 = ({ onNext, onBack }) => {
@@ -8,6 +11,7 @@ const Step4 = ({ onNext, onBack }) => {
   const [email, setEmail] = useState(state.email || '');
   const [showEmail, setShowEmail] = useState(false);
   const [isValid, setIsValid] = useState(true);
+  const { sendEmail, isLoading, isError, response } = userEmailSender();
 
   useEffect(() => {
     setEmail(state.email || '');
@@ -26,13 +30,27 @@ const Step4 = ({ onNext, onBack }) => {
     }
   }, [email, showEmail]);
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (isValid) {
+      if (showEmail) {
+        if (email && validateEmail(email)) { // Check if email is typed and valid
+          await sendEmail({ ...state, email }); // Pass the email along with other state
+          if (isError) {
+            toast.error('Failed to send email');
+          } else {
+            toast.success('Email sent successfully');
+          }
+        } else {
+          toast.error('Invalid email format.');
+          return; // Return early to prevent moving to the next step
+        }
+      }
       onNext({ email });
     } else {
       toast.error('Invalid email format.');
     }
   };
+  
   const handleBack = () =>{
     onBack({ email });
   };
@@ -59,8 +77,16 @@ const Step4 = ({ onNext, onBack }) => {
       {showEmail && <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />}
     </div>
     
-    <button onClick={handleNext}>Next</button>
-    {onBack && <button onClick={handleBack}>Back</button>}
+    {isLoading ? (
+        <>
+        Sending The Email!
+        </>
+      ) : (
+        <>
+          <button onClick={handleNext}>Next</button>
+          {onBack && <button onClick={handleBack}>Back</button>}
+        </>
+      )}
       
     </div>
   );

@@ -9,7 +9,7 @@ const useFetchCountries = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/api/fetchCountries');
-        const data = response.data.data;
+        const data = response.data;
         const countryArray = Object.values(data).map((item) => `${item.country}, ${item.region}`);
         const sortedCountryArray = countryArray.sort((a, b) => {
             const countryA = a.split(',')[0].trim();

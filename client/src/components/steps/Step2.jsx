@@ -62,15 +62,15 @@ const Step2 = ({ onNext, onBack }) => {
   };
 
   return (
-    <div>
+    <div className='step2Wrapper'>
 
       <h1>
         Alright! {name !== '' && name}
       </h1>
-      <h4>
+      <h3 className='text-center m-4'>
         Just few more details!
-      </h4>
-      <label for="age">{name !== ''?<>How Old Are You, {name}?</>:<>How Old Are You?</>}</label>
+      </h3>
+      <label for="age">{name !== ''?<p>How Old Are You, {name}?</p>:<p>How Old Are You?</p>}</label>
       <input
         type="number"
         name='age'
@@ -81,7 +81,7 @@ const Step2 = ({ onNext, onBack }) => {
       />
 
       <div className='nationWrapper'>
-      <h6>Country:</h6>
+      <p>Country:</p>
       <div className={`select-container ${isActive ? 'active' : ''}`}>
       <div className="select" onClick={toggleActive}>
         <input type="text" id="input" placeholder="Nationality" value={nationality} readOnly />
@@ -101,7 +101,7 @@ const Step2 = ({ onNext, onBack }) => {
       </div>
   
       <div className='radioWrapper'>
-      <h6>Gender:</h6>
+      <p>Gender:</p>
       <group>
       <div class="input-container">
       <input type="radio" name="Male" value="Male"  checked={gender === 'Male'} onChange={() => setGender('Male')}  /><label>Male</label>      
@@ -116,11 +116,14 @@ const Step2 = ({ onNext, onBack }) => {
       <input type="radio" name="Transgender" value="Transgender" checked={gender === 'Transgender'} onChange={() => setGender('Transgender')}  /><label>Transgender</label>  
     </div>  
     <div class="input-container">
-      <input type="radio" name="other" value="other" checked={gender === 'other'} onChange={() => setGender('other')} /><label>other</label>  
+      <input type="radio" name="Other" value="Other" checked={gender === 'Other'} onChange={() => setGender('Other')} /><label>Other</label>  
     </div> 
-
+    
   </group>
       </div>
+      <div><span>You can always come back later <br /> and finish the form, we will save your progress!</span></div>
+      <br />
+      <br />
       <button onClick={handleNext}>Next</button>
       {onBack && <button onClick={handleBack}>Back</button>}
     </div>

@@ -26,9 +26,9 @@ const Step3 = ({ onNext, onBack }) => {
   };
 
   return (
+    <div className='step3-container'>
+      <h1 className='text-center m-3'>Select Your Hogwarts House</h1>
     <div>
-      <h2>Select Your Hogwarts House</h2>
-    <div className="step3-container">
       <div className="flex-wrapper">
         <div className={`banner-one ${hogwartsHouse === 'Gryffindor' ? 'selected' : ''}`} onClick={() => handleHouseSelect('Gryffindor')}><p>G</p></div>
         <div className={`banner-two ${hogwartsHouse === 'Ravenclaw' ? 'selected' : ''}`} onClick={() => handleHouseSelect('Ravenclaw')}><p>R</p></div>
@@ -39,9 +39,15 @@ const Step3 = ({ onNext, onBack }) => {
       {hogwartsHouse !==''?<>{hogwartsHouse}</>:<>Select An House</>}
       </h2>
     </div>
-    <p>Choose your preferred house, and the Sorting Hat will take your choice into consideration as it determines your magical destiny.</p>
+    <p className='text-center'>Choose your preferred house, and the Sorting Hat will <br />
+      take your choice into consideration as it determines your magical destiny.</p>
+    <div className='text-center'><p>You can always come back later and finish the form, we will save your progress!</p></div>
+    <br />
+    <br />
+    <div id='buttons'>
     <button onClick={handleNext}>Next</button>
       {onBack && <button onClick={handleBack}>Back</button>}
+      </div>
     </div>
   );
 };
