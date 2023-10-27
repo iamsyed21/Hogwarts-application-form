@@ -1,0 +1,1209 @@
+$light-background: white;
+$dark-background: black;
+$light-navbar: #f8f9fa; 
+$dark-navbar: #343a40;  
+$select-bg: #0f0e11;
+$option-bg: #6e6477;
+$white: white;
+$gryffindor-red: #740001;
+$hufflepuff-yellow: #d2a741;
+$ravenclaw-blue: #0e1a40;
+$slytherin-green: #1a472a;
+$magic-font: 'Cinzel', serif;
+$hogwarts-gold: #DAA520;
+$hogwarts-maroon: #800000;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght400;700&display=swap');
+
+
+
+body{
+    overflow-y: scroll;
+}
+
+.light-theme {
+    background-color: $light-background;
+    h1{
+        font-family: 'Cinzel', serif;
+        color: $select-bg;
+    }
+
+    p {
+        font-family: 'Lora', serif;
+        color: #000;
+      }
+
+    h3{
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        color: $ravenclaw-blue;
+
+    }
+    button{
+        background-color: $hogwarts-maroon;
+        color: $hogwarts-gold;
+        padding: 12px 24px;
+        font-size: 24px;
+        border: 2px solid $hogwarts-gold;
+        border-radius: 4px;
+        font-weight: bolder;
+        float: right;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-left: 30px;
+        transition: all 0.3s ease;
+      
+        &:hover {
+          background-color: #1a472a;
+          border-color: darken($hogwarts-gold, 10%);
+        }
+      
+        &:active {
+          background-color: darken($hogwarts-maroon, 20%);
+          border-color: darken($hogwarts-gold, 20%);
+        }
+      
+        &:disabled {
+          background-color: lighten($hogwarts-maroon, 20%);
+          border-color: lighten($hogwarts-gold, 20%);
+          cursor: not-allowed;
+        }
+    }
+
+    label {
+        font-size:1rem;
+        color:gray;
+        cursor:pointer;
+    }
+    input {
+        margin:1px 0;
+        margin-bottom: 10px;
+        padding:15px 10px;
+        width:100%;
+        font-size:1.2rem;
+        outline:none;
+        border:1px solid #bbb;
+        border-radius:20px;
+        display:inline-block;
+        -webkit-box-sizing:border-box;
+           -moz-box-sizing:border-box;
+                box-sizing:border-box;
+        -webkit-transition:0.2s ease all;
+           -moz-transition:0.2s ease all;
+            -ms-transition:0.2s ease all;
+             -o-transition:0.2s ease all;
+                transition:0.2s ease all;
+    }
+
+    span{
+        font-family: 'Lora', serif;
+        opacity: 0.9;
+        color: black;
+        font-size: 16px;
+        float: left;
+    }
+
+    .step2Wrapper{
+        .radioWrapper{
+
+            margin-top: 20px;
+            margin-bottom: 10px;
+            input[type="radio"] {
+                opacity:0;
+                width: 100%;
+                height: 42px;
+                cursor: pointer;
+                background-color:blue;
+                position:relative;
+                z-index:1
+              }
+              group {
+                width: 500px;
+                display:flex;
+              }
+              .input-container {
+                height:42px;
+                width:100%;
+                line-height:42px;
+                text-align:center;
+                position:relative;
+                &:first-child {
+                  label{
+                   border-radius: 5px 0 0 5px 
+                  }
+                }
+                &:last-child {
+                  label {
+                    border-radius: 0 5px 5px 0;
+                    border-right:2px solid #CCC;
+                  }
+                }
+              }
+              label {
+                width:100%;
+                height:100%;
+                position:absolute;
+                border:2px solid #CCC;
+                border-right:inherit;
+                top:0;
+                left:0;
+                color: black
+              }
+              input {
+                &:checked + label {
+                  background-color: $hogwarts-gold ;
+                  top:0;
+                  left:0;
+                  border:2px solid $hogwarts-gold !important;
+                  z-index:2;
+                  font-weight: bold;
+                  color:#740001;
+                }
+              }
+              @media only screen and (max-width: 767px) {
+                group {
+                    flex-direction: column;
+                    align-items: center;
+                    width: 94%;
+                  }
+              
+                  .input-container {
+                    width: 90%;
+                    margin-bottom: 10px;
+                    border: 1px solid gray;
+                    border-radius: 2px;
+              
+                    &:first-child, &:last-child {
+                      label {
+                        border-radius: 5px;
+                      }
+                    }
+                  }
+              
+                  label, input[type="radio"] {
+                    width: 100%;
+                  }
+                }
+        }
+    
+        .nationWrapper{
+            .select-container {
+                position: relative;
+                width: 90%;
+                margin: 0 auto;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+              
+                &.active .select::after {
+                  border: none;
+                  border-left: 2px solid $white;
+                  border-top: 2px solid $white;
+                }
+              
+                &.active .option-container {
+                  height: 240px;
+                }
+              
+                .select {
+                  position: relative;
+                  background: $select-bg;
+                  height: 60px;
+              
+                  &::after {
+                    position: absolute;
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    top: 50%;
+                    right: 15px;
+                    transform: translateY(-50%) rotate(45deg);
+                    border-bottom: 2px solid $white;
+                    border-right: 2px solid $white;
+                    cursor: pointer;
+                    transition: border-color 0.4s;
+                  }
+              
+                  input {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 15px;
+                    background: none;
+                    outline: none;
+                    border: none;
+                    font-size: 1.4rem;
+                    color: $white;
+                    cursor: pointer;
+                  }
+                }
+              
+                .option-container {
+                  position: relative;
+                  background: $option-bg;
+                  height: 0;
+                  overflow-y: scroll;
+                  transition: 0.4s;
+              
+                  .option {
+                    position: relative;
+                    padding-left: 15px;
+                    height: 60px;
+                    border-top: 1px solid rgba(0, 0, 0, 0.3);
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    transition: 0.2s;
+              
+                    &.selected {
+                      background: rgba(0, 0, 0, 0.5);
+                      pointer-events: none;
+                    }
+              
+                    &:hover {
+                      background: rgba(0, 0, 0, 0.2);
+                      padding-left: 20px;
+                    }
+              
+                    label {
+                      font-size: 1.1rem;
+                      color: $white;
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+        }
+    }
+
+  
+   
+    
+    form input[type=text]:focus,
+    form input[type="password"]:focus {
+        border-color:cornflowerblue;
+    }
+
+    .navbar {
+        background-color: $light-navbar !important;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+        flex-direction: row;
+        gap: 2rem;
+
+        img{
+            width: 200px;
+        }
+      }
+
+    .formStyleWrapper{
+        min-height: 550px;
+        padding: 20px;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .heroPage{
+        button{
+            display: block;
+            margin: 30px auto;
+        }
+
+        .secretText{
+            width: 100%;
+            text-align: center;
+            opacity: 0.6;
+            &:hover{
+                opacity: 0.2;
+                cursor: none;
+            }
+        }
+    }
+    
+     
+    .step3-container {
+        font-family: 'IM Fell Great Primer', serif;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background-color: #0f0e11;
+        border-radius: 12px;
+
+        span{
+            text-align: center;
+            color: white;
+        }
+
+        p{
+            font-size: 12px;
+            color: white;
+        }
+        h2 {
+          margin-bottom: 20px;
+          margin-top: -20px;
+          padding-bottom: 20px;
+          color: $hogwarts-gold;
+        }
+      
+        .flex-wrapper {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          height: 60%;
+          margin-left: 10%;
+          margin-right: 10%;
+        }
+      
+        .banner-one,
+        .banner-two,
+        .banner-three,
+        .banner-four {
+          -webkit-clip-path: polygon(100% 0, 100% 58%, 100% 83%, 50% 67%, 0 83%, 0% 0%);
+          clip-path: polygon(100% 0, 100% 58%, 100% 83%, 50% 67%, 0 83%, 0% 0%);
+          height: 400px;
+          width: 120px;
+          cursor: pointer;
+        }
+      
+        .banner-one {
+          background-color: #891204;
+          p {
+            color: #DC9915;
+            font-size: 100px;
+          }
+        }
+      
+        .banner-two {
+          background-color: #1D3666;
+          p {
+            color: #A06020;
+            font-size: 100px;
+          }
+        }
+      
+        .banner-three {
+          background-color: #DC9915;
+          p{
+            font-size: 100px;
+          }
+        }
+      
+        .banner-four {
+          background-color: #135035;
+          p {
+            color: #847062;
+            font-size: 100px;
+          }
+        }
+
+        #buttons {
+            text-align: center; 
+            margin: 0 auto; 
+          
+            button {
+              margin: 0 10px;
+            }
+          }
+       
+      
+      
+        .selected {
+          border: 10px solid white;
+        }
+      }
+
+    .step4-container {
+            font-family: $magic-font;
+            background-color: rgba(255, 255, 255, 0.8); // Semi-transparent white
+            border-radius: 10px;
+            padding: 20px;
+            padding-bottom: 0px;
+            margin-bottom: 20px;
+            min-width: 500px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); // A little shadow for depth
+          
+            h2 {
+              color: $gryffindor-red;
+              font-size: 2rem;
+              margin-bottom: 20px;
+            }
+          
+            table {
+              width: 100%;
+              border-collapse: collapse;
+          
+              tr {
+                border-bottom: 1px solid #ccc;
+          
+                td {
+                  padding: 10px;
+                  text-align: left;
+                  font-size: 1.2rem;
+          
+                  &:first-child {
+                    color: $ravenclaw-blue;
+                    font-weight: bold;
+                  }
+          
+                  &:last-child {
+                    color: $slytherin-green;
+                  }
+                }
+              }
+            }
+          
+            label {
+              display: flex;
+              align-items: center;
+              font-size: 24px;
+              color: black;
+              margin-top: 20px;
+          
+              input[type="checkbox"] {
+                margin-right: 10px;
+                margin-bottom: 0px;
+                width: 30px;
+                height: 20px;
+                background: white;
+                border: 2px solid $hufflepuff-yellow;
+                border-radius: 4px;
+                cursor: pointer;
+          
+                &:checked {
+                  background: $hufflepuff-yellow;
+                }
+              }
+            }
+          
+            input[type="email"] {
+              margin-top: 10px;
+              padding: 10px;
+              width: 100%;
+              border: 1px solid $hufflepuff-yellow;
+              border-radius: 5px;
+            }
+          
+            button {
+              margin-top: 20px;
+              padding: 10px 20px;
+              background-color: $gryffindor-red;
+              color: white;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+          
+              &:hover {
+                background-color: darken($gryffindor-red, 10%);
+              }
+            }
+          } 
+  }
+  
+  .dark-theme {
+    background-color:$select-bg;
+
+    h1{
+        font-family: 'Cinzel', serif;
+        color: $hufflepuff-yellow;
+    }
+
+    p {
+        font-family: 'Lora', serif;
+        color: lightgray;
+      }
+
+      h3{
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        color: $slytherin-green;
+
+    }
+
+    span{
+        font-family: 'Lora', serif;
+        opacity: 0.9;
+        color: gray;
+        font-size: 16px;
+        
+    }
+
+    button{
+        background-color: $hogwarts-maroon;
+        color: $hogwarts-gold;
+        padding: 12px 24px;
+        font-size: 24px;
+        border: 2px solid $hogwarts-gold;
+        border-radius: 4px;
+        font-weight: bolder;
+        float: right;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-left: 30px;
+        transition: all 0.3s ease;
+      
+        &:hover {
+          background-color: #1a472a;
+          border-color: darken($hogwarts-gold, 10%);
+        }
+      
+        &:active {
+          background-color: darken($hogwarts-maroon, 20%);
+          border-color: darken($hogwarts-gold, 20%);
+        }
+      
+        &:disabled {
+          background-color: lighten($hogwarts-maroon, 20%);
+          border-color: lighten($hogwarts-gold, 20%);
+          cursor: not-allowed;
+        }
+    }
+
+    label {
+        font-size:1rem;
+        color:gray;
+        cursor:pointer;
+    }
+    input {
+        margin:1px 0;
+        margin-bottom: 10px;
+        padding:15px 10px;
+        width:100%;
+        font-size:1.2rem;
+        background-color: gray;
+        outline:none;
+        border:1px solid white;
+        border-radius:20px;
+        color: #000;
+        display:inline-block;
+        -webkit-box-sizing:border-box;
+           -moz-box-sizing:border-box;
+                box-sizing:border-box;
+        -webkit-transition:0.2s ease all;
+           -moz-transition:0.2s ease all;
+            -ms-transition:0.2s ease all;
+             -o-transition:0.2s ease all;
+                transition:0.2s ease all;
+
+                &::placeholder {  
+                    color: rgb(193, 192, 192);
+                  }
+    }
+
+    .step2Wrapper{
+        
+        .radioWrapper{
+            margin-top: 20px;
+            margin-bottom: 10px;
+            input[type="radio"] {
+                opacity:0;
+                width: 100%;
+                height: 42px;
+                cursor: pointer;
+                background-color:blue;
+                position:relative;
+                z-index:1
+              }
+              group {
+                width: 500px;
+                display:flex;
+              }
+              .input-container {
+                height:42px;
+                width:100%;
+                line-height:42px;
+                text-align:center;
+                position:relative;
+                &:first-child {
+                  label{
+                   border-radius: 5px 0 0 5px 
+                  }
+                }
+                &:last-child {
+                  label {
+                    border-radius: 0 5px 5px 0;
+                    border-right:2px solid #CCC;
+                  }
+                }
+              }
+              label {
+                width:100%;
+                height:100%;
+                position:absolute;
+                border:2px solid #CCC;
+                border-right:inherit;
+                top:0;
+                left:0;
+                color: white
+              }
+              input {
+                &:checked + label {
+                  background-color: $hogwarts-gold ;
+                  top:0;
+                  left:0;
+                  border:2px solid $hogwarts-gold !important;
+                  z-index:2;
+                  font-weight: bold;
+                  color:#740001;
+                }
+              }
+
+              @media only screen and (max-width: 767px) {
+                group {
+                    flex-direction: column;
+                    align-items: center;
+                    width: 94%;
+                  }
+              
+                  .input-container {
+                    width: 90%;
+                    margin-bottom: 10px;
+                    border: 1px solid gray;
+                    border-radius: 2px;
+              
+                    &:first-child, &:last-child {
+                      label {
+                        border-radius: 5px;
+                      }
+                    }
+                  }
+              
+                  label, input[type="radio"] {
+                    width: 100%;
+                  }
+                }
+              
+        }
+    
+        .nationWrapper{
+            
+            .select-container {
+                position: relative;
+                width: 90%;
+                margin: 0 auto;
+                color: #000;    
+                margin-top: 10px;
+                margin-bottom: 20px;
+                box-shadow: 2px 2px 5px rgba(255, 255, 244, 0.7);
+              
+                &.active .select::after {
+                  border: none;
+                  border-left: 2px solid $white;
+                  border-top: 2px solid $white;
+                }
+              
+                &.active .option-container {
+                  height: 240px;
+                }
+              
+                .select {
+                  position: relative;
+                  background: gray;
+                  
+                  height: 60px;
+              
+                  &::after {
+                    position: absolute;
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    
+                    top: 50%;
+                    right: 15px;
+                    transform: translateY(-50%) rotate(45deg);
+                    border-bottom: 2px solid $white;
+                    border-right: 2px solid $white;
+                    cursor: pointer;
+                    transition: border-color 0.4s;
+                  }
+              
+                  input {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 15px;
+                    background: none;
+                    outline: none;
+                    
+                    border: none;
+                    font-size: 1.4rem;
+                    color: $white;
+                    cursor: pointer;
+                  }
+                }
+              
+                .option-container {
+                  position: relative;
+                  background: $option-bg;
+                  height: 0;
+                  color: #000;
+                  overflow-y: scroll;
+                  transition: 0.4s;
+              
+                  .option {
+                    position: relative;
+                    padding-left: 15px;
+                    height: 60px;
+                    border-top: 1px solid rgba(255, 255, 255, 0.3);
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    transition: 0.2s;
+              
+                    &.selected {
+                      background: rgba(255, 255, 255, 0.5);
+                      pointer-events: none;
+                    }
+              
+                    &:hover {
+                      background: rgba(0, 0, 0, 0.2);
+                      padding-left: 20px;
+                    }
+              
+                    label {
+                      font-size: 1.1rem;
+                      color: $white;
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+        }
+    }
+   
+   
+    
+    form input[type=text]:focus,
+    form input[type="password"]:focus {
+        border-color:cornflowerblue;
+    }
+
+    .navbar {
+        background-color: $dark-background !important;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+        flex-direction: row;
+        gap: 2rem;
+
+        img{
+            width: 200px;
+        }
+      }
+
+    .formStyleWrapper{
+        min-height: 550px;
+        padding: 20px;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .heroPage{
+        button{
+            display: block;
+            margin: 30px auto;
+        }
+
+        .secretText{
+            width: 100%;
+            text-align: center;
+            opacity: 0.2;
+            &:hover{
+                opacity: 0.1;
+                cursor: none;
+            }
+        }
+    }
+    
+    .step3-container {
+            font-family: 'IM Fell Great Primer', serif;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            background-color: #0f0e11;
+            border-radius: 12px;
+
+            p{
+                font-size: 12px;
+            }
+            h2 {
+              margin-bottom: 20px;
+              margin-top: -30px;
+              padding-bottom: 20px;
+              color: $hogwarts-gold;
+            }
+          
+            .flex-wrapper {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-evenly;
+              height: 60%;
+              margin-left: 10%;
+              margin-right: 10%;
+            }
+          
+            .banner-one,
+            .banner-two,
+            .banner-three,
+            .banner-four {
+              -webkit-clip-path: polygon(100% 0, 100% 58%, 100% 83%, 50% 67%, 0 83%, 0% 0%);
+              clip-path: polygon(100% 0, 100% 58%, 100% 83%, 50% 67%, 0 83%, 0% 0%);
+              height: 400px;
+              width: 120px;
+              cursor: pointer;
+            }
+          
+            .banner-one {
+              background-color: #891204;
+              p {
+                color: #DC9915;
+                font-size: 100px;
+              }
+            }
+          
+            .banner-two {
+              background-color: #1D3666;
+              p {
+                color: #A06020;
+                font-size: 100px;
+              }
+            }
+          
+            .banner-three {
+              background-color: #DC9915;
+              p{
+                font-size: 100px;
+              }
+            }
+          
+            .banner-four {
+              background-color: #135035;
+              p {
+                color: #847062;
+                font-size: 100px;
+              }
+            }
+
+            #buttons {
+                text-align: center; 
+                margin: 0 auto; 
+              
+                button {
+                  margin: 0 10px;
+                }
+              }
+           
+          
+          
+            .selected {
+              border: 10px solid white;
+            }
+          }
+
+    .step4-container {
+            font-family: $magic-font;
+            background-color: rgba(255, 255, 255, 0.8); // Semi-transparent white
+            border-radius: 10px;
+            padding: 20px;
+            padding-bottom: 0px;
+            margin-bottom: 20px;
+            min-width: 500px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); // A little shadow for depth
+          
+            h2 {
+              color: $gryffindor-red;
+              font-size: 2rem;
+              margin-bottom: 20px;
+            }
+          
+            table {
+              width: 100%;
+              border-collapse: collapse;
+          
+              tr {
+                border-bottom: 1px solid #ccc;
+          
+                td {
+                  padding: 10px;
+                  text-align: left;
+                  font-size: 1.2rem;
+          
+                  &:first-child {
+                    color: $ravenclaw-blue;
+                    font-weight: bold;
+                  }
+          
+                  &:last-child {
+                    color: $slytherin-green;
+                  }
+                }
+              }
+            }
+          
+            label {
+              display: flex;
+              align-items: center;
+              font-size: 24px;
+              color: black;
+              margin-top: 20px;
+          
+              input[type="checkbox"] {
+                margin-right: 10px;
+                margin-bottom: 0px;
+                width: 30px;
+                height: 20px;
+                background: white;
+                border: 2px solid $hufflepuff-yellow;
+                border-radius: 4px;
+                cursor: pointer;
+          
+                &:checked {
+                  background: $hufflepuff-yellow;
+                }
+              }
+            }
+          
+            input[type="email"] {
+              margin-top: 10px;
+              padding: 10px;
+              width: 100%;
+              border: 1px solid $hufflepuff-yellow;
+              border-radius: 5px;
+            }
+          
+            button {
+              margin-top: 20px;
+              padding: 10px 20px;
+              background-color: $gryffindor-red;
+              color: white;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+          
+              &:hover {
+                background-color: darken($gryffindor-red, 10%);
+              }
+            }
+          } 
+}
+  
+
+$font-family: "Harry Potter", Arial;
+
+.contenedor {
+  width: 30rem;
+  margin: 0 auto;
+  display: flex;
+}
+
+.casa {
+  height: 20rem;
+  flex-grow: 1;
+  font-family: $font-family;
+  color: black;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 15px;
+  background-color: #09714600;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 110px 150px;
+  cursor: pointer;
+  border-bottom: 30px solid transparent;
+  border-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/border-triangle.png") 0% 0% 100% 0% stretch;
+  transition: 0.75s;
+
+  &:hover {
+    height: 340px;
+    font-size: 30px;
+  }
+
+  &#Gryffindor {
+    background-color: #A80102;
+    background-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/Gryffindor.png");
+  }
+
+  &#Hufflepuff {
+    background-color: #786254;
+    background-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/Hufflepuff.png");
+  }
+
+  &#Ravenclaw {
+    background-color: #31446F;
+    background-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/Ravenclaw.png");
+  }
+
+  &#Slytherin {
+    background-color: #097146;
+    background-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/Slytherin.png");
+  }
+}
+
+
+@media only screen and (max-width: 567px) {
+    .contenedor {
+        width: 20rem;
+        margin: 0 auto;
+        display: flex;
+      }
+      
+      .casa {
+        height: 16rem;
+        flex-grow: 1;
+        font-family: $font-family;
+        color: black;
+        text-align: center;
+        font-size: 12px;
+        padding-top: 15px;
+        background-color: #09714600;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 110px 150px;
+        cursor: pointer;
+        border-bottom: 30px solid transparent;
+        border-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/border-triangle.png") 0% 0% 100% 0% stretch;
+        transition: 0.75s;
+      
+        &:hover {
+          height: 300px;
+          font-size: 30px;
+        }
+      
+        &#Gryffindor {
+          background-color: #A80102;
+          background-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/Gryffindor.png");
+        }
+      
+        &#Hufflepuff {
+          background-color: #786254;
+          background-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/Hufflepuff.png");
+        }
+      
+        &#Ravenclaw {
+          background-color: #31446F;
+          background-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/Ravenclaw.png");
+        }
+      
+        &#Slytherin {
+          background-color: #097146;
+          background-image: url("https://raw.githubusercontent.com/NestorPlasencia/img/master/Slytherin.png");
+        }
+      }
+
+      .step2Wrapper{
+    
+       
+        
+    
+        .nationWrapper{
+            
+            .select-container {
+                position: relative;
+                width: 80%;
+                margin: 0 auto;
+                color: #000;    
+                margin-top: 10px;
+                margin-bottom: 20px;
+                box-shadow: 2px 2px 5px rgba(255, 255, 244, 0.7);
+              
+                &.active .select::after {
+                  border: none;
+                  border-left: 2px solid $white;
+                  border-top: 2px solid $white;
+                }
+              
+                &.active .option-container {
+                  height: 240px;
+                }
+              
+                .select {
+                  position: relative;
+                  background: gray;
+                  
+                  height: 60px;
+              
+                  &::after {
+                    position: absolute;
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    
+                    top: 50%;
+                    right: 15px;
+                    transform: translateY(-50%) rotate(45deg);
+                    border-bottom: 2px solid $white;
+                    border-right: 2px solid $white;
+                    cursor: pointer;
+                    transition: border-color 0.4s;
+                  }
+              
+                  input {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 15px;
+                    background: none;
+                    outline: none;
+                    
+                    border: none;
+                    font-size: 1.4rem;
+                    color: $white;
+                    cursor: pointer;
+                  }
+                }
+              
+                .option-container {
+                  position: relative;
+                  background: $option-bg;
+                  height: 0;
+                  color: #000;
+                  overflow-y: scroll;
+                  transition: 0.4s;
+              
+                  .option {
+                    position: relative;
+                    padding-left: 15px;
+                    height: 60px;
+                    border-top: 1px solid rgba(255, 255, 255, 0.3);
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    transition: 0.2s;
+              
+                    &.selected {
+                      background: rgba(255, 255, 255, 0.5);
+                      pointer-events: none;
+                    }
+              
+                    &:hover {
+                      background: rgba(0, 0, 0, 0.2);
+                      padding-left: 20px;
+                    }
+              
+                    label {
+                      font-size: 1.1rem;
+                      color: $white;
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+        }
+    }
+
+
+    .letterImage{
+        width: 300px;
+    }
+
+
+}
