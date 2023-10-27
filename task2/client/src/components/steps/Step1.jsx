@@ -1,14 +1,21 @@
 import { useUserContext } from '@/hooks/useUserContext.js';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
+import useFetchRandomUser from '@/hooks/useFetchRandomUser';
+
 
 
 const Step1 = ({ onNext }) => {
-  const { state } = useUserContext();
+  const { state, dispatch } = useUserContext();
   const [firstName, setFirstName] = useState(state.firstName || '');
   const [lastName, setLastName] = useState(state.lastName || '');
   const [givenName, setGivenName] = useState(state.givenName || '');
   const [isValid, setIsValid] = useState(false);
+  useFetchRandomUser(dispatch, true);
+  
+
+  
+
 
   useEffect(() => {
     setFirstName(state.firstName || '');
@@ -16,17 +23,22 @@ const Step1 = ({ onNext }) => {
     setGivenName(state.givenName || '');
   }, [state]);
 
+  useEffect(() => {
+    setIsValid(firstName.trim() !== '' && lastName.trim() !== '');
+  }, [firstName, lastName]);
+  
+
+  
+
   const handleNext = () => {
     if (isValid) {
-      onNext({ firstName, lastName, givenName });
+     onNext({ firstName, lastName, givenName });  
     } else {
       toast.error('First Name and Last Name are required.');
     }
   };
 
-  useEffect(() => {
-    setIsValid(firstName.trim() !== '' && lastName.trim() !== '');
-  }, [firstName, lastName]);
+
 
   return (
     <div>

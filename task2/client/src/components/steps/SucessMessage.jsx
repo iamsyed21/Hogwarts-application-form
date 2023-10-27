@@ -14,11 +14,9 @@ const SucessMessage = ({ setCurrentStep }) => {
   return (
     <div className='text-center'>
     <h1>Hurray!!!!</h1>
-    <h3>You have successfully completed the form.</h3>
-    <img className='letterImage' src="/assets/letter.png" alt="hogwarts letter" />
-    <p>Look out for that letter! It might fly in anytime now!</p>
+    <h3>You have successfully fetched your data.</h3>
     <div className="d-flex justify-content-center align-items-center">
-  <button className="text-center" onClick={handleReset}>Submit another Response!</button>
+  <button className="text-center" onClick={handleReset}>Check for another Wizard?</button>
 </div>
 
   </div>

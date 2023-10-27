@@ -5,9 +5,8 @@ export const initialState = {
     nationality: "",
     age: 0,
     gender: "",
+    stepFormProgress: 0,
     hogwartsHouse: "",
-    stepFormProgress:0,
-    email: "",
   };
 
 const userReducer = (state, action) => {

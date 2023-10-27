@@ -1,7 +1,10 @@
+
 import React from 'react'
 
 
 const HeroPage = ({ setCurrentStep }) => {
+
+
 
     const handleReset = () => {
         setCurrentStep(1);
@@ -18,11 +21,10 @@ const HeroPage = ({ setCurrentStep }) => {
 
     <br/>
       <h1 className='text-center'>
-        WELCOME TO HOGWARTS ADMISSION PORTAL!
+        WELCOME TO HOGWARTS ALUMNI PORTAL!
       </h1>
       
-    <p className='text-center'>We have few simple questions</p>
-    <p className='secretText'>This is just to trick the muggles, we already know everything!</p>
+    <p className='text-center'>Just tell us your name and we'll get your details</p>
     
 
     <div className="d-flex justify-content-center align-items-center">
